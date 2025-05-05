@@ -1,0 +1,106 @@
+{% load static %}
+<button id="faqButton">Consulter notre FAQ</button>
+
+<div id="faqPopup" class="popup">
+    <div class="popup-content">
+        <h2>Foire Aux Questions</h2>
+        <div class="faq-item">
+            <h3>A qui appartient ce site ?</h3>
+            <div>
+                <p>Le site dorylus.eu appartient et est édité par la société Dorylus Productions, SAS au capital de 10000€ immatriculée au RCS de Paris sous le numéro 924 995 160 et dont le siège social se situe au 61 rue de Lyon, 75012 Paris.</p> 
+            </div>
+        </div>
+        <div class="faq-item">
+            <h3>Quel usage ferez-vous de mon scénario ?</h3>
+            <div>
+                <p>Nous dépouillons les scénarios, pas leurs auteurs : votre confiance nous est essentielle car notre métier est avant tout d'accompagner les auteurs dans le déploiement de leur vision. Nous nous engageons dans les domaines suivants :</p>
+                <ul>
+                    <li>Respect du droit d'auteur : Nous respectons strictement le droit d'auteur français. Vous conservez tous les droits sur votre scénario, et nous ne revendiquons aucune propriété ou licence d'exploitation sur votre travail.</li>
+                    <li>Confidentialité : Nous ne diffuserons jamais les fichiers que vous nous transmettez sans votre consentement explicite.</li>
+                    <li>Sous-traitance : nous appellons l'API de la société Mistral AI afin d'extraire des informations sur des fragments de texte contenus dans votre scénario. Comme l'indique leur <a href="https://mistral.ai/fr/terms#privacy-policy" target=”_blank”> politique de confidentialité </a><sup>(section 3.4.2)</sup> ces données d'entrée pourront servir à développer et entraîner les modèles d'intelligence artificielle à usage général mis à disposition par cette société.</li>
+                    <li>Recontact : Si votre scénario suscite notre intérêt en tant que producteur, nous nous réservons la possibilité de vous recontacter par email pour échanger sur d'éventuelles collaborations.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Je n'ai pas reçu mon dépouillement</h3>
+            <div>
+            <p>Il peut y avoir plusieurs raisons à cela :</p>
+            <ul>
+                <li>Le mail qui vous a été adressé a pu arriver dans votre dossier spam</li>
+                <li>Vous avez peut-être consulté une autre messagerie que celle associée à votre compte Google</li>
+                <li>Votre scénario est peut-être en cours de traitement - compter une dizaine de minutes pour un court-métrage, lorsque le service fonctionne normalement.</li>
+            </ul>
+            <p>Si vous avez effectué ces vérifications et attendu un délai raisonnable, le service peut rencontrer un problème inattendu. Merci à vous si vous prenez la peine de nous rapporter ce problème via notre <a class="exitpopup" href="{%url 'website:contact' %}">formulaire de contact</a>  !</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <h3>Pourquoi demander une authentification via Google ?</h3>
+            <div>
+                <p>Nous vous demandons une authentification pour éviter d'éventuels usages détournés ou malveillants de ce service, comme le <i>flooding</i> de boîtes mails.</p>
+                <p>Le service d'authentification proposé par Google est à la fois robuste et rapide à déployer.</p>
+                <p>Si vous aimeriez que nous proposions d'autres modes d'authentification merci de nous faire savoir lesquels via notre <a class="exitpopup" href="{%url 'website:contact' %}">formulaire de contact.</a></p>
+            </div>  
+        </div>
+        <div class="faq-item">
+            <h3>Quels sont les formats acceptés ?</h3>
+            <div>
+                <p>A l'heure actuelle nous ne proposons que l'upload de fichiers .pdf.</p>
+                <p>Nous envisageons plusieurs ajouts de formats, dont .fountain/.txt et .fdx (Final Draft), et nous sommes ouverts à vos <a class="exitpopup" href="{%url 'website:contact' %}">propositions.</a> </p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <h3>Quelles langues sont prises en charge ?</h3>
+            <div>
+                <p>Cet outil a d'abord été pensé pour produire un résultat en langue française.</p>
+                <p>Nous pensons intégrer l'anglais prochainement, et si vous avez d'autres langues à suggérer ou des retours d'utilisation à proposer vous pouvez le faire via notre  <a class="exitpopup" href="{%url 'website:contact' %}">formulaire de contact.</a></p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <h3>Quelles sont les limites d'utilisation du service ?</h3>
+            <div>
+                <p>Nous limitons l'utilisation gratuite de ce service à 10 scénarios par utilisateur et par mois.</p>
+                <p>Dans le cas où vous auriez atteint cette limite n'hésitez pas à nous <a class="exitpopup" href="{%url 'website:contact' %}">contacter</a> pour échanger sur votre besoin.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <h3>Mon scénario doit-il respecter une certaine mise en page ?</h3>
+            <div>
+                <p>Notre outil est conçu pour être très permissif quant à la mise en page de votre scénario. Vous obtiendrez le meilleur résultat possible si vous respectez le formalisme suivant : </p>
+                <ul>
+                    <li>séquences numérotées </li>
+                    <li>entêtes de séquences en lettres majuscules, sur une seule ligne</li>
+                    <li>mots-clés relativement communs pour décrire l'effet de chaque scène ('INT'/'EXT', 'JOUR'/'NUIT'/...)</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqButton = document.getElementById('faqButton');
+        const faqPopup = document.getElementById('faqPopup');
+
+        // Ouvrir la fenêtre popup lorsque le bouton est cliqué
+        faqButton.addEventListener('click', function() {
+            faqPopup.style.display = 'flex';
+        });
+
+        // Fermer la fenêtre popup lorsque l'utilisateur clique en dehors de la fenêtre
+        window.addEventListener('click', function(event) {
+            if (event.target == faqPopup) {
+                faqPopup.style.display = 'none';
+            }
+        });
+
+        faqPopup.addEventListener('click', function(event) {
+            if (event.target.tagName === 'A') {
+                faqPopup.style.display = 'none';
+            }
+        });
+
+    });
+
+</script>

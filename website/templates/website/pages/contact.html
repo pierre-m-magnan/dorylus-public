@@ -1,0 +1,31 @@
+{% extends "website/base.html" %}
+
+
+{% block content %}
+
+<section>
+<div id="contact" class="subsection">
+    <h2>CONTACT</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <p>{{ contact_form.Nom }}</p>
+            
+            <p>{{ contact_form.Email.errors.0 }}
+                {{ contact_form.Email }}
+            </p>
+            <p>{{ contact_form.Objet }}</p>
+            <p>{{ contact_form.Message }}</p>
+
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" name="contact_submit">Envoyer le message</button>
+        </div>
+    </form>
+</div>
+</section>
+
+
+
+{% endblock %}

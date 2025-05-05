@@ -1,0 +1,84 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+{% load static %}
+<section id="about">
+    <div class="subsection" id="edito">
+        <h2>A PROPOS</h2>
+        <p>Dorylus est le nom scientifique d'un genre de fourmis légionnaires, également appelé <u id="producteur">Magnan</u>.</p>
+        <p>Nous accueillons des projets de courts-métrages de fiction, documentaires et séries courtes </p>
+        <div class="animated-text">
+            <p>avec une vigilance particulière quant au fait qu'ils reposent sur un conflit - exprimé avec ou sans violence.</p>
+            <p>Nous nous précipitons sur vos scénarios pour les <a href="{% url 'website:breakdown'%}">dépouiller en quelques minutes</a>, puis les décortiquer consciencieusement et faire apparaître leur squelette.</p>
+            <p>Notre ligne éditoriale est issue d'une géométrie non-euclidienne : le plus court chemin n'est pas forcément la ligne droite.</p>
+            <p>C'est un sentier de phéromones qu'on se plait à tracer instinctivement, </p>
+            <p>n’hésitant pas à faire un détour lorsque nous détectons des qualités primaires, sensorielles, physiologiques </p>   
+            <p>qui activent notre système lymphatique. </p>
+            <p>Si les défis techniques titillent nos mandibules, notre abdomen ne peut en digérer qu’un à la fois. </p>  
+            <p>Ainsi nous construisons patiemment une galerie souterraine de projets dont les porteurs ont tous quelque chose à communiquer à leur public, </p>
+            <p>et pour cela préfèrent la danse ou l'antennation à la trophallaxie. </p>
+        </div>
+    </div>
+
+</section>
+
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-content">
+        <img src="{% static 'website/images/pierre_magnan.jpg' %}" alt="Pierre Magnan" class="sidebar-image">
+        <div class="sidebar-text">
+            <p>Culturellement proche des industries techniques et des métiers d’ingénierie du fait de sa formation initiale, <b>Pierre Magnan</b> se forme à la production en quelques courtes années d'assistanat auprès de plusieurs sociétés. </p>
+            <p>Il crée la société Dorylus Productions en 2024, afin de développer en fiction le précepte de Zweig :</p>
+            <blockquote> <i>Plus un esprit se limite et plus il touche par ailleurs à l’infini.</i></blockquote>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const producteur = document.getElementById('producteur');
+        const sidebar = document.getElementById('sidebar');
+        const aboutSection = document.getElementById('about');
+
+        function showSidebar() {
+            event.stopPropagation(); 
+            sidebar.style.opacity = '1'; 
+        };
+        
+        function hideSidebar() {
+            sidebar.style.opacity = '0';
+        }
+
+        producteur.addEventListener('mouseenter', showSidebar)
+        producteur.addEventListener('mouseleave', hideSidebar)
+
+        if (/Mobi|Android|Tablet|iPad/i.test(navigator.userAgent)) {
+            producteur.addEventListener('click', function(event) {
+                showSidebar()
+            })
+            document.addEventListener('click', function(event) {
+                if (!sidebar.contains(event.target) && event.target !== producteur) {
+                    hideSidebar();
+                }
+            });
+
+            sidebar.addEventListener('click', function(event) {
+                event.stopPropagation(); 
+            });
+        } 
+
+        
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const lines = document.querySelectorAll('.animated-text p');
+        let delay = 1000;
+
+        lines.forEach((line, index) => {
+            setTimeout(() => {
+                line.classList.add('visible');
+            }, delay);
+            delay += 1000;
+        });
+    });
+</script>
+{% endblock %}

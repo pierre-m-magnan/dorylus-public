@@ -1,0 +1,46 @@
+{% extends "website/base.html" %}
+
+
+{% block content %}
+
+<section>
+    <div class="subsection">
+        <h2>PRÉPARONS VOTRE TOURNAGE</h2>
+        
+        {% if request.session.user_data %}
+        <div>
+        <p>Chargez votre scénario au format pdf</p>
+        <p>Votre dépouillement sera envoyé à l'adresse {{ request.session.user_data.email }}
+        <a href="{% url 'website:sign_out' %}"> Déconnexion </a> </p>
+
+        <p>{% include "website/components/upload.html" %}</p>
+
+        </div>
+        {% else %}
+        <div>
+            <p>Recevez en quelques minutes le dépouillement général de votre film au format Excel, complété par IA séquence par séquence.</p>
+            <p>Connexion requise - envoi par email.</p>
+            <script src="https://accounts.google.com/gsi/client" async></script>
+            <div id="g_id_onload"
+                data-client_id="696523004881-etfuost1ghkqo9283euo8gep5ttgkrs2.apps.googleusercontent.com"
+                data-context="signin"
+                data-ux_mode="popup"
+                data-login_uri="{% url 'website:auth_receiver' %}"
+                data-auto_prompt="false">
+            </div>
+            <div class="center-container">
+                <div class="g_id_signin"
+                    data-type="standard"
+                    data-shape="rectangular"
+                    data-theme="outline"
+                    data-text="signin_with"
+                    data-size="large"
+                    data-logo_alignment="left">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <p>{% include "website/components/faq.html" %}</p>
+    </div>
+</section>
+{% endblock %}

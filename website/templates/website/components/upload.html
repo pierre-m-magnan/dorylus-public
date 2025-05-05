@@ -1,0 +1,17 @@
+
+{% block upload %}
+
+
+{% if request.session.user_data.email %}
+
+<form id=upload action="{% url 'website:breakdown'%}" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{ form.errors.file.0 }}
+
+    {{ form.file }}
+    
+    <input type="submit" value="Envoyer" name="document_submit"> 
+</form> 
+{% endif %}
+{% endblock %}

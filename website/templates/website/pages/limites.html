@@ -1,0 +1,11 @@
+
+{% extends "website/base.html" %}
+
+{% block content %}
+<section>
+    <h2>Désolé !</h2>
+    <p>Nous limitons ce service gratuit à 10 utilisations par visiteur et par mois</p>
+    <p>N'hésitez pas à nous <a href="{%url 'website:contact' %}">contacter</a> si vous souhaitez l'utiliser davantage.</p>
+</section>
+
+{% endblock %}

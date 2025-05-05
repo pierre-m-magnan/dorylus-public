@@ -1,0 +1,78 @@
+{% extends "website/base.html" %}
+
+{% load static %}
+{% block content %}
+
+<section id="films">
+    <div class="gallery">
+        <div class="gallery-item">
+            <div class="blur-load" style="background-image: url('{% static 'website/images/ffw2_small.jpg' %}')">
+                <img src="{% static 'website/images/ffw2.png' %}" loading="lazy" alt="Fast Forward" class="gallery-img">
+            </div>
+            <div class="overlay">
+                <div class="title"><h3>FAST FORWARD</h3></div>
+                <div class="overlayhover">
+                    <p>Fiction - court-métrage - 2024 - réal. Quentin Muteau - avec Paul Lapierre, Oscar Tresanini - en diffusion <img src="{% static 'website/images/artefact_logo.png' %}" alt="Artefact Logo" class="logo"></p>
+                    <p><u>Synopsis :</u> Laurent décide de renoncer à son SUV et de se remettre au vélo. Il s’élance sur la route avec son fils Axel installé dans une remorque, et tous deux entreprennent de remettre au goût du jour l’antiquité avec laquelle ils roulent. Une course à la modernisation est lancée, saura-t-on l'arrêter à temps ?</p>
+                    <p><a href="{% static 'website/documents/FAST_FORWARD_memoire_technique&artistique_SD.pdf' %}" target="_blank">Téléchargez le dossier du film</a></p>
+                </div>
+            </div>  
+        </div>
+        <div class="gallery-item">
+            <div class="blur-load" style="background-image: url('{% static 'website/images/detonations_small.jpg' %}')">
+                <img src="{% static 'website/images/detonations.png' %}" loading="lazy" alt="Détonations" class="gallery-img">
+            </div>
+            <div class="overlay">
+                <div class="title"><h3>DÉTONATIONS</h3></div>
+                <div class="overlayhover">
+                    <p>Documentaire - 2025 - réal. Pierre Magnan - en production</p>
+                    <p><u>Synopsis :</u> Un après-midi de juillet, sur le champ de tir d'un feu d'artifice. Le montage se fait dans le calme, l'ambiance est appliquée, ça transpire. "Fais gaffe où tu mets les pieds", nous dit un artificier alors que nous traversons une série de <i>lignes</i> de fil électrique posées au sol. Soudain résonnent des bruits incongrus : est-ce un crachat ? un éternuement ? une exclamation ? des cris de douleur ?</i></p>
+                    <p><i>Détonations </i> est une plongée démystifiante dans la réalité des <i>phobies d'impulsion</i>, entre animation et prise de vues réelles</p>
+                </div>
+            </div>  
+        </div>
+        <div class="gallery-item">
+            <div class="blur-load" style="background-image: url('{% static 'website/images/lemariage_3_small.jpg' %}')">
+                <img src="{% static 'website/images/lemariage_3.png' %}" loading="lazy" alt="Le Mariage" class="gallery-img">
+            </div>
+            <div class="overlay">
+                <div class="title"><h3>LE MARIAGE</h3></div>
+                <div class="overlayhover">
+                    <p>Fiction audio - 2024 - réal. Clélia Sarotte - en diffusion <a href="https://www.carbone4.com/" target="_blank"><img src="{% static 'website/images/carbone4.png' %}" alt="Carbone4 Logo" class="logo"></a></p>
+                    <p><u>Synopsis :</u>En 2060, Julia vient d'ouvrir son agence de mariage et sa première cliente souhaite organiser un <i>destination wedding</i>. Alors que chaque épisode incrémente d'un degré l'amplitude du réchauffement planétaire, Julia va devoir redoubler d'inventivité pour adapter l'organisation de ce mariage à de nouveaux enjeux climatiques et sécuritaires.</p>
+                </div>
+            </div>  
+        </div>
+        <div class="gallery-item">
+            <div class="blur-load" style="background-image: url('{% static 'website/images/SansUnMot_STILL_crop_small.jpg' %}')">
+                <img src="{% static 'website/images/SansUnMot_STILL_crop.jpg' %}" loading="lazy" alt="Sans un mot" class="gallery-img">
+            </div>
+            <div class="overlay">
+                <div class="title"><h3>SANS UN MOT</h3></div>
+                <div class="overlayhover">
+                    <p>Fiction - court-métrage - 2023 - réal. Alexandre Gneouchev - en diffusion <a href="https://www.femis.fr/" target="_blank"><img src="{% static 'website/images/la-femis-logo.png' %}" alt="La Fémis Logo" class="logo"></a></p>
+                    <p><u>Synopsis :</u>Qu’est-ce qu’il se passe si je n’y vais pas ? Si je ne fais rien ? Si je me laisse dériver... C’est ce que va faire le personnage principal du film, qui par la défection et le rejet va embrasser une déchéance sociale rapide dans un monde où le langage se déstructure et disparaît autour de lui.</p>
+                </div>
+            </div>  
+        </div>
+
+
+</section>
+<script>
+    const blurDivs = document.querySelectorAll(".blur-load")
+    blurDivs.forEach(div => {
+        const img = div.querySelector("img")
+
+        function loaded() {
+            div.classList.add("loaded")
+        }
+        if (img.complete) {
+            loaded()
+        } else {
+            img.addEventListener("load", loaded)
+        }
+    }
+
+    )
+</script>
+{% endblock %}
